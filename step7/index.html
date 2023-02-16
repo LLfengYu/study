@@ -1,0 +1,61 @@
+<!--
+ * @Author: amos 1037181164@qq.com
+ * @Date: 2022-12-30 14:15:15
+ * @LastEditors: amos 1037181164@qq.com
+ * @LastEditTime: 2023-01-04 15:50:19
+ * @FilePath: /study/step7/index.html
+ * @Description: 常见布局
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>css 常见布局</title>
+    <style>
+      #div {
+        width: 200px;
+        height: 100px;
+        border-radius: 100px;
+        background: pink;
+      }
+      .children {
+        width: 100%;
+        height: 100%;
+        background: #000;
+      }
+      .outer {
+        display: flex;
+        height: 100px;
+      }
+
+      .left {
+        width: 100px;
+        background: tomato;
+      }
+
+      .right {
+        width: 100px;
+        background: gold;
+      }
+
+      .center {
+        flex: 1;
+        background: lightgreen;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <div id="div">
+     <div>
+      <div class="children"></div>
+    </div>
+  </div> -->
+    <div class="outer">
+      <div class="left"></div>
+      <div class="center"></div>
+      <div class="right"></div>
+    </div>
+  </body>
+</html>

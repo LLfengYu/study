@@ -1,0 +1,37 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+header {
+  width: 100vw;
+  height: 10vh;
+  background-color: aqua;
+}
+.main {
+  display: flex;
+}
+
+.left {
+  width: 15vw;
+  height: 90vh;
+  background-color: pink;
+}
+
+.middle {
+  width: 70vw;
+  height: 90vh;
+  background-color: yellow;
+}
+.middle .middleTop {
+  height: 60vh;
+  background-color: green;
+}
+.middle .middleBtm {
+  height: 30vh;
+  background-color: greenyellow;
+}
+.right {
+  width: 15vw;
+  height: 90vh;
+  background-color: #ffc001;
+}
