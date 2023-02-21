@@ -2,7 +2,7 @@
  * @Author: amos 1037181164@qq.com
  * @Date: 2023-02-16 18:54:24
  * @LastEditors: amos 1037181164@qq.com
- * @LastEditTime: 2023-02-16 20:14:21
+ * @LastEditTime: 2023-02-20 10:31:58
  * @FilePath: /study/step33/index.js
  * @Description: call  , apply  , bind
  */
@@ -41,3 +41,26 @@ Function.prototype.myApply = function (context) {
   }
   return result;
 };
+
+Function.prototype.myBind = function (context) {
+  if (typeof this !== "function") {
+    throw new Error("type error");
+  }
+  var fn = this;
+  var args = [...arguments].slice(1);
+  return function () {
+    context = context || this;
+    fn.apply(context, args);
+  };
+};
+
+function call(context) {
+  // todo this is a function?
+  var res;
+  context = context || window;
+  context.fn = this;
+  var args = [...arguments].slice(1);
+  res = context.fn(...args);
+  delete context.fn;
+  return res;
+}

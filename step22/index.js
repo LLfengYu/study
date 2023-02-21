@@ -2,7 +2,7 @@
  * @Author: amos 1037181164@qq.com
  * @Date: 2023-01-09 22:52:56
  * @LastEditors: amos 1037181164@qq.com
- * @LastEditTime: 2023-01-29 14:30:05
+ * @LastEditTime: 2023-02-20 11:27:03
  * @FilePath: /study/step22/index.js
  * @Description:  手写一个深 浅 拷贝
  */
@@ -91,3 +91,9 @@ function deepClone(target) {
   }
   return result;
 }
+
+// 考虑function的情况
+dist = function () {
+  // 在函数中去执行原来的函数，确保返回的值相同
+  return target.call(this, ...arguments);
+};

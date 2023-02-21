@@ -2,7 +2,7 @@
  * @Author: amos 1037181164@qq.com
  * @Date: 2023-01-12 17:27:05
  * @LastEditors: amos 1037181164@qq.com
- * @LastEditTime: 2023-01-12 18:17:37
+ * @LastEditTime: 2023-02-17 11:17:00
  * @FilePath: /study/step24/index.js
  * @Description: 手写instanceof
  */
@@ -26,4 +26,16 @@ function myInstanceof(left, right) {
   }
 }
 
-console.log(myInstanceof([1, 2], Function));
+// console.log(myInstanceof([1, 2], Function));
+
+function instance(left, right) {
+  let rightProto = right.prototype;
+  let leftProto = left.__proto__;
+
+  while (true) {
+    if (!leftProto) return false;
+    if (rightProto == leftProto) return true;
+    leftProto = leftProto.__proto__;
+  }
+}
+console.log(instance([1, 2], Array));

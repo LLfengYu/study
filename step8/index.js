@@ -2,7 +2,7 @@
  * @Author: amos 1037181164@qq.com
  * @Date: 2022-12-30 17:48:35
  * @LastEditors: amos 1037181164@qq.com
- * @LastEditTime: 2023-01-28 23:25:06
+ * @LastEditTime: 2023-02-16 22:55:53
  * @FilePath: /study/step8/index.js
  * @Description: 数组转为树形结构
  */
@@ -39,7 +39,7 @@ function arrToTree(arr) {
   });
   return result;
 }
-console.log(arrToTree(arr));
+// console.log(arrToTree(arr));
 
 function promiseAll(promiseArray) {
   return new Promise((resolve, reject) => {
@@ -65,3 +65,24 @@ function promiseAll(promiseArray) {
     }
   });
 }
+
+function arr2Tree(arr) {
+  var obj = {};
+  var result = [];
+  arr.forEach((item) => {
+    obj[item.id] = item;
+  });
+  arr.forEach((item) => {
+    const pNode = obj[item.pid];
+    if (pNode) {
+      pNode.children = obj[item.pid].children || [];
+      pNode.children.push(item);
+      obj[item.pid] = pNode;
+    } else {
+      result.push(item);
+    }
+  });
+  console.log(result);
+  return result;
+}
+arr2Tree(arr);

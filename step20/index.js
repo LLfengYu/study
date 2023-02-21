@@ -2,7 +2,7 @@
  * @Author: amos 1037181164@qq.com
  * @Date: 2023-01-09 17:16:11
  * @LastEditors: amos 1037181164@qq.com
- * @LastEditTime: 2023-01-29 11:02:47
+ * @LastEditTime: 2023-02-20 12:42:56
  * @FilePath: /study/step20/index.js
  * @Description: 手写一个防抖节流方法
  */
@@ -24,7 +24,7 @@ function debounce(fn, wait) {
     }, wait);
   };
 }
-
+// 节流  定时器版本
 function throttle(fn, wait) {
   // 单位时间内先执行
   // 如果timer不为空，直接return
@@ -38,5 +38,44 @@ function throttle(fn, wait) {
         timer = null;
       }, wait);
     }
+  };
+}
+
+// 节流  时间戳版本
+function throttle(fn, time) {
+  var last = 0;
+  return function () {
+    var now = Date.now();
+    if (now >= last + time) {
+      fn.apply(this, arguments);
+      last = now;
+    } else {
+      console.log("throttle");
+    }
+  };
+}
+
+//
+function throttle(fn, time) {
+  var last = 0;
+  return function () {
+    var now = Date.now();
+    if (now >= last + time) {
+      fn().apply();
+    }
+  };
+}
+// 防抖  单位时间内最后执行，重复触发重新计时
+function debounce(fn, time) {
+  var timer = null;
+  return function () {
+    if (timer) {
+      clearTimeout(timer);
+    }
+    var _this = this;
+    var args = [...arguments];
+    timer = setTimeout(() => {
+      fn.call(_this, args);
+    }, time);
   };
 }

@@ -2,7 +2,7 @@
  * @Author: amos 1037181164@qq.com
  * @Date: 2023-02-16 11:08:20
  * @LastEditors: amos 1037181164@qq.com
- * @LastEditTime: 2023-02-16 11:34:24
+ * @LastEditTime: 2023-02-16 22:37:19
  * @FilePath: /study/step31/index.js
  * @Description:
  */
@@ -90,4 +90,4 @@ function find(tree, id) {
   }
 }
 
-console.log(find(tree, "2001"));
+// console.log(find(tree, "2001"));

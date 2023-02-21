@@ -2,7 +2,7 @@
  * @Author: amos 1037181164@qq.com
  * @Date: 2022-12-29 10:20:38
  * @LastEditors: amos 1037181164@qq.com
- * @LastEditTime: 2023-02-16 16:17:00
+ * @LastEditTime: 2023-02-19 17:17:53
  * @FilePath: /study/step3/index.ts
  * @Description: 数组扁平化
  */
@@ -111,7 +111,7 @@ function getArray2(arr) {
 console.log(7, getArray2([1, [2, 3, [4, [5, 6]], 7]]));
 
 // 使用 Array.toString()  将数组直接转换成逗号分隔的字符串，再使用split(',')方法将字符串转换成数组
-const e = [1, [2, 3, [4, [5, 6]], 7]];
+const e = [1, [2, 3, [4, [5, 6]], 7]]; //toString（）方法后转换成了：字符串 1，2，3，4，5，6，7
 console.log(8, e.toString().split(","));
 
 // 使用reduce 递归
@@ -126,4 +126,24 @@ function getArray3(arr) {
 console.log(9, getArray3(e));
 
 // 数组扁平化：
-function getArray4(arr) {}
+function getArray4(arr) {
+  return arr.toString().split(",");
+}
+console.log(444, getArray4(b));
+
+// 实现一个flat方法
+Array.prototype.Flat = function (depth) {
+  if (!Array.isArray(this) || depth <= 0) {
+    return this;
+  }
+  if (depth == "Infinity") {
+    return this.toString().split(",");
+  }
+  this.reduce((total, current) => {
+    if (Array.isArray(current)) {
+      return total.concat(current.Flat(depth - 1));
+    } else {
+      return [...total, current];
+    }
+  }, []);
+};

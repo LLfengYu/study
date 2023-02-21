@@ -2,7 +2,7 @@
  * @Author: amos 1037181164@qq.com
  * @Date: 2023-01-10 23:13:40
  * @LastEditors: amos 1037181164@qq.com
- * @LastEditTime: 2023-01-29 12:08:10
+ * @LastEditTime: 2023-02-20 11:15:17
  * @FilePath: /study/step23/index.js
  * @Description: 手写reduce
  */
@@ -28,3 +28,30 @@ function test(arr) {
   console.log(result);
 }
 test([1, 2, 3, 4]);
+
+function myCall(context) {
+  if (typeof this !== "function") {
+    throw new Error("type error");
+  }
+  context = context || window;
+  let res = null;
+  context.fn = this;
+  let args = [...arguments].slice(1);
+  res = context.fn(...args);
+  delete context.fn;
+  return res;
+}
+
+function getType(obj) {
+  if (obj === null) {
+    return null + "";
+  }
+  if (obj instanceof Object) {
+    const res = Object.prototype.toString.call(obj);
+    let type = res.split(" ")[1].split("");
+    type.pop();
+    return type.join("");
+  } else {
+    return typeof obj;
+  }
+}

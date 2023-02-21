@@ -2,7 +2,7 @@
  * @Author: amos 1037181164@qq.com
  * @Date: 2023-02-16 16:17:35
  * @LastEditors: amos 1037181164@qq.com
- * @LastEditTime: 2023-02-16 18:57:01
+ * @LastEditTime: 2023-02-19 09:22:46
  * @FilePath: /study/step32/index.js
  * @Description: 获取对象数据类型
  */

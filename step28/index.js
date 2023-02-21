@@ -2,7 +2,7 @@
  * @Author: amos 1037181164@qq.com
  * @Date: 2023-01-13 21:16:26
  * @LastEditors: amos 1037181164@qq.com
- * @LastEditTime: 2023-01-24 16:40:52
+ * @LastEditTime: 2023-02-20 10:39:00
  * @FilePath: /study/step28/index.js
  * @Description: 手写promise.all   promise.race
  */
@@ -73,22 +73,3 @@ promiseAll([p3, p1, p2]).then((res) => {
 promiseRace([p3, p1, p2]).then((res) => {
   console.log(res); // 1
 });
-
-function promiseRace(promiseArray) {
-  return new Promise((resolve, reject) => {
-    if (!Array.isArray(promiseArray)) {
-      throw new TypeError("type error");
-    }
-    var len = promiseArray.length;
-    for (let i = 0; i < len; i++) {
-      Promise.resolve(promiseArray[i]).then(
-        (value) => {
-          resolve(value);
-        },
-        (error) => {
-          reject(error);
-        }
-      );
-    }
-  });
-}
