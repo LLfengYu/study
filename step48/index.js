@@ -25,4 +25,25 @@ Array.prototype.Flat = function (depth) {
   }, []);
 };
 
-console.log(arr.Flat(1));
+// console.log(arr.Flat(1));
+
+Array.prototype.Flatt = function (depth = 0) {
+  if (!Array.isArray(this) || depth <= 0) {
+    return this;
+  }
+  // num 或 Infinity
+  if (depth === "Infinity") {
+    return this.toString().split(",");
+  }
+
+  return this.reduce((total, current) => {
+    if (Array.isArray(current)) {
+      const data = current.Flatt(depth - 1);
+      return (total = [...total, ...data]);
+    } else {
+      return (total = [...total, current]);
+    }
+  }, []);
+};
+
+console.log(arr.Flatt(2));
